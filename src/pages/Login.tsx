@@ -1,6 +1,7 @@
 import bilIkon from "../assets/car.png";
 import axiosInstance from "../utils/axiosInstance";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface FormData {
   email: string;
@@ -8,6 +9,7 @@ interface FormData {
 }
 
 export default function Login() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
@@ -26,8 +28,10 @@ export default function Login() {
 
     try {
       const response = await axiosInstance.post("/api/auth/sign-in", formData);
-      console.log("Login successful:", response.data); // Handle success response here
+      localStorage.setItem("token", response.data.token);
+
       setLoading(false);
+      navigate("/app/dashboard");
       // Optionally, you might save the token or user data to state/local storage
     } catch (error: any) {
       console.error("Login failed:", error.response.data); // Handle error response here
