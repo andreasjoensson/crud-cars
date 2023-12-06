@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute, { ProtectedRouteProps } from "./utils/ProtectedRoute";
+import Biler from "./pages/Biler";
+import LejBil from "./pages/LejBil";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -28,6 +30,19 @@ root.render(
             {...defaultProtectedRouteProps}
             outlet={<Dashboard />}
           />
+        }
+      />
+      <Route
+        path="/app/biler"
+        element={
+          <ProtectedRoute {...defaultProtectedRouteProps} outlet={<Biler />} />
+        }
+      />
+
+      <Route
+        path="/app/lej"
+        element={
+          <ProtectedRoute {...defaultProtectedRouteProps} outlet={<LejBil />} />
         }
       />
     </Routes>
