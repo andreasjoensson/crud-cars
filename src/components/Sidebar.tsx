@@ -117,6 +117,42 @@ export default function Sidebar() {
                     </span>
                   </Link>
                 </li>
+
+                <li>
+                  <Link
+                    to="/app/lokation"
+                    className={`flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700 ${
+                      location.pathname === "/app/lokation"
+                        ? "bg-gray-100 dark:bg-gray-700"
+                        : ""
+                    }`}
+                  >
+                    <svg
+                      fill="#000000"
+                      version="1.1"
+                      id="Capa_1"
+                      className="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlnsXlink="http://www.w3.org/1999/xlink"
+                      width="24px"
+                      height="24px"
+                      viewBox="0 0 395.71 395.71"
+                      xmlSpace="preserve"
+                    >
+                      <g>
+                        <path
+                          d="M197.849,0C122.131,0,60.531,61.609,60.531,137.329c0,72.887,124.591,243.177,129.896,250.388l4.951,6.738
+		c0.579,0.792,1.501,1.255,2.471,1.255c0.985,0,1.901-0.463,2.486-1.255l4.948-6.738c5.308-7.211,129.896-177.501,129.896-250.388
+		C335.179,61.609,273.569,0,197.849,0z M197.849,88.138c27.13,0,49.191,22.062,49.191,49.191c0,27.115-22.062,49.191-49.191,49.191
+		c-27.114,0-49.191-22.076-49.191-49.191C148.658,110.2,170.734,88.138,197.849,88.138z"
+                        />
+                      </g>
+                    </svg>
+                    <span className="ml-3" sidebar-toggle-item>
+                      Lokationer
+                    </span>
+                  </Link>
+                </li>
               </ul>
               <div className="pt-2 space-y-2">
                 <Link

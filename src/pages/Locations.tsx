@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import axiosInstance from "../utils/axiosInstance";
 import RentalTable from "../tables/RentalTable";
 import CreateRental from "../components/CreateRental";
+import CreateLocation from "../components/CreateLocation";
+import LocationTable from "../tables/LocationTable";
 
-export default function LejBil() {
+export default function Locations() {
   const [showModal, setShowModal] = useState(false);
   const [cars, setCars] = useState([]) as any[];
 
@@ -19,7 +21,7 @@ export default function LejBil() {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const data = await axiosInstance.get("/api/rentals/");
+        const data = await axiosInstance.get("/api/location/");
         setCars(data.data);
       } catch (error) {
         console.log("error", error);
@@ -33,20 +35,20 @@ export default function LejBil() {
       <AdminLayout>
         <div className="flex justify-between">
           <h1 className="text-xl font-bold">
-            Her er en oversigt over alle lejede biler.
+            Her er en oversigt over alle udlejnings lokationer.
           </h1>
           <button
             onClick={openModal}
             className="px-4 py-2 mt-4 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
           >
-            Opret ny leje
+            Opret ny lokation
           </button>
         </div>
 
-        {showModal && <CreateRental closeModal={closeModal} />}
+        {showModal && <CreateLocation closeModal={closeModal} />}
 
         <div className="mt-4">
-          <RentalTable cars={cars} />
+          <LocationTable cars={cars} />
         </div>
       </AdminLayout>
     </div>

@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import ProtectedRoute, { ProtectedRouteProps } from "./utils/ProtectedRoute";
 import Biler from "./pages/Biler";
 import LejBil from "./pages/LejBil";
+import Locations from "./pages/Locations";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -38,7 +39,15 @@ root.render(
           <ProtectedRoute {...defaultProtectedRouteProps} outlet={<Biler />} />
         }
       />
-
+      <Route
+        path="/app/lokation"
+        element={
+          <ProtectedRoute
+            {...defaultProtectedRouteProps}
+            outlet={<Locations />}
+          />
+        }
+      />
       <Route
         path="/app/lej"
         element={
