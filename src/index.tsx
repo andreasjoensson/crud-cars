@@ -9,6 +9,7 @@ import ProtectedRoute, { ProtectedRouteProps } from "./utils/ProtectedRoute";
 import Biler from "./pages/Biler";
 import LejBil from "./pages/LejBil";
 import Locations from "./pages/Locations";
+import { DatabaseProvider } from "./context/DatabaseContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -20,42 +21,50 @@ const defaultProtectedRouteProps: Omit<ProtectedRouteProps, "outlet"> = {
 };
 
 root.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/login" element={<Login />} />
-      <Route
-        path="/app/dashboard"
-        element={
-          <ProtectedRoute
-            {...defaultProtectedRouteProps}
-            outlet={<Dashboard />}
-          />
-        }
-      />
-      <Route
-        path="/app/biler"
-        element={
-          <ProtectedRoute {...defaultProtectedRouteProps} outlet={<Biler />} />
-        }
-      />
-      <Route
-        path="/app/lokation"
-        element={
-          <ProtectedRoute
-            {...defaultProtectedRouteProps}
-            outlet={<Locations />}
-          />
-        }
-      />
-      <Route
-        path="/app/lej"
-        element={
-          <ProtectedRoute {...defaultProtectedRouteProps} outlet={<LejBil />} />
-        }
-      />
-    </Routes>
-  </BrowserRouter>
+  <DatabaseProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/app/dashboard"
+          element={
+            <ProtectedRoute
+              {...defaultProtectedRouteProps}
+              outlet={<Dashboard />}
+            />
+          }
+        />
+        <Route
+          path="/app/biler"
+          element={
+            <ProtectedRoute
+              {...defaultProtectedRouteProps}
+              outlet={<Biler />}
+            />
+          }
+        />
+        <Route
+          path="/app/lokation"
+          element={
+            <ProtectedRoute
+              {...defaultProtectedRouteProps}
+              outlet={<Locations />}
+            />
+          }
+        />
+        <Route
+          path="/app/lej"
+          element={
+            <ProtectedRoute
+              {...defaultProtectedRouteProps}
+              outlet={<LejBil />}
+            />
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  </DatabaseProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

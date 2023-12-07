@@ -1,3 +1,4 @@
+import DatabaseToggle from "../components/DatabaseToggle";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 
@@ -18,6 +19,7 @@ export default function AdminLayout({ children }: any) {
           </main>
         </div>
       </div>
+      <DatabaseToggle />
     </div>
   );
 }

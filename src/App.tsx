@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./App.css";
 import carIcon from "./assets/car.png";
+import DatabaseToggle from "./components/DatabaseToggle";
 
 function App() {
   return (
@@ -133,6 +134,7 @@ function App() {
             </a>
           </div>
         </div>
+        <DatabaseToggle />
       </section>
     </div>
   );
