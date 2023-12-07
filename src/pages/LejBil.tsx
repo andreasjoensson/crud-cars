@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 import axiosInstance from "../utils/axiosInstance";
 import RentalTable from "../tables/RentalTable";
 import CreateRental from "../components/CreateRental";
+import { Rental } from "../types/Rental";
 
 export default function LejBil() {
   const [showModal, setShowModal] = useState(false);
-  const [cars, setCars] = useState([]) as any[];
+  const [rentals, setRentals] = useState<Rental[]>([]);
 
   const openModal = () => {
     setShowModal(true);
@@ -17,15 +18,15 @@ export default function LejBil() {
   };
 
   useEffect(() => {
-    const fetchCars = async () => {
+    const fetchRentals = async () => {
       try {
         const data = await axiosInstance.get("/api/rentals/");
-        setCars(data.data);
+        setRentals(data.data);
       } catch (error) {
         console.log("error", error);
       }
     };
-    fetchCars();
+    fetchRentals();
   }, []);
 
   return (
@@ -46,7 +47,7 @@ export default function LejBil() {
         {showModal && <CreateRental closeModal={closeModal} />}
 
         <div className="mt-4">
-          <RentalTable cars={cars} />
+          <RentalTable rentals={rentals} />
         </div>
       </AdminLayout>
     </div>

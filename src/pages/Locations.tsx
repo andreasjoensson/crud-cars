@@ -1,14 +1,13 @@
 import AdminLayout from "../layouts/AdminLayout";
 import { useEffect, useState } from "react";
 import axiosInstance from "../utils/axiosInstance";
-import RentalTable from "../tables/RentalTable";
-import CreateRental from "../components/CreateRental";
 import CreateLocation from "../components/CreateLocation";
 import LocationTable from "../tables/LocationTable";
+import { Location as LocationType } from "../types/Location";
 
 export default function Locations() {
   const [showModal, setShowModal] = useState(false);
-  const [cars, setCars] = useState([]) as any[];
+  const [locations, setLocations] = useState<LocationType[]>([]);
 
   const openModal = () => {
     setShowModal(true);
@@ -19,15 +18,15 @@ export default function Locations() {
   };
 
   useEffect(() => {
-    const fetchCars = async () => {
+    const fetchLocations = async () => {
       try {
         const data = await axiosInstance.get("/api/location/");
-        setCars(data.data);
+        setLocations(data.data);
       } catch (error) {
         console.log("error", error);
       }
     };
-    fetchCars();
+    fetchLocations();
   }, []);
 
   return (
@@ -48,7 +47,7 @@ export default function Locations() {
         {showModal && <CreateLocation closeModal={closeModal} />}
 
         <div className="mt-4">
-          <LocationTable cars={cars} />
+          <LocationTable locations={locations} />
         </div>
       </AdminLayout>
     </div>
