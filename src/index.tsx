@@ -16,7 +16,7 @@ const root = ReactDOM.createRoot(
 );
 
 const defaultProtectedRouteProps: Omit<ProtectedRouteProps, "outlet"> = {
-  isAuthenticated: !!localStorage.getItem("token"),
+  isAuthenticated: true,
   authenticationPath: "/login",
 };
 

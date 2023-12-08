@@ -31,7 +31,6 @@ export default function Login() {
       localStorage.setItem("token", response.data.token);
       setLoading(false);
       navigate("/app/dashboard");
-      // Optionally, you might save the token or user data to state/local storage
     } catch (error: any) {
       console.error("Login failed:", error.response.data); // Handle error response here
       setLoading(false);
