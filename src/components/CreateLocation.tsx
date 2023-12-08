@@ -1,7 +1,7 @@
 import React from "react";
 import axiosInstance from "../utils/axiosInstance";
 
-export default function CreateLocation({ closeModal }: any) {
+export default function CreateLocation({ closeModal, addLocation }: any) {
   const [locationName, setLocationName] = React.useState("");
   const [locationAddress, setLocationAddress] = React.useState("");
 
@@ -14,6 +14,7 @@ export default function CreateLocation({ closeModal }: any) {
     console.log(newLocation);
     axiosInstance.post("/api/location/", newLocation).then((res) => {
       console.log(res);
+      addLocation(newLocation);
       closeModal();
     });
   };

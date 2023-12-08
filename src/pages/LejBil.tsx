@@ -17,6 +17,10 @@ export default function LejBil() {
     setShowModal(false);
   };
 
+  const addRental = (rental: Rental) => {
+    setRentals([...rentals, rental]);
+  };
+
   useEffect(() => {
     const fetchRentals = async () => {
       try {
@@ -44,7 +48,9 @@ export default function LejBil() {
           </button>
         </div>
 
-        {showModal && <CreateRental closeModal={closeModal} />}
+        {showModal && (
+          <CreateRental closeModal={closeModal} addRental={addRental} />
+        )}
 
         <div className="mt-4">
           <RentalTable rentals={rentals} />

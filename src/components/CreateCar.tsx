@@ -1,7 +1,7 @@
 import React from "react";
 import axiosInstance from "../utils/axiosInstance";
 
-export default function CreateCar({ closeModal }: any) {
+export default function CreateCar({ closeModal, addCar }: any) {
   const [name, setName] = React.useState("");
   const [model, setModel] = React.useState("");
   const [year, setYear] = React.useState("");
@@ -17,6 +17,7 @@ export default function CreateCar({ closeModal }: any) {
     console.log(newCar);
     axiosInstance.post("/api/cars/", newCar).then((res) => {
       console.log(res);
+      addCar(newCar);
       closeModal();
     });
   };

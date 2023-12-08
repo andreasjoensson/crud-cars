@@ -1,7 +1,7 @@
 import React from "react";
 import axiosInstance from "../utils/axiosInstance";
 
-export default function CreateRental({ closeModal }: any) {
+export default function CreateRental({ closeModal, addRental }: any) {
   const [rentalDate, setRentalDate] = React.useState("");
   const [returnDate, setReturnDate] = React.useState("");
   const [carID, setCarID] = React.useState("");
@@ -28,6 +28,7 @@ export default function CreateRental({ closeModal }: any) {
     console.log(newRental);
     axiosInstance.post("/api/rentals/", newRental).then((res) => {
       console.log(res);
+      addRental(newRental);
       closeModal();
     });
   };

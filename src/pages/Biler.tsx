@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 import BilTable from "../tables/BilTable";
 import axiosInstance from "../utils/axiosInstance";
 import CreateCar from "../components/CreateCar";
+import { Car } from "../types/Car";
 
 export default function Biler() {
   const [showModal, setShowModal] = useState(false);
-  const [cars, setCars] = useState([]) as any[];
+  const [cars, setCars] = useState<Car[]>([]);
 
   const openModal = () => {
     setShowModal(true);
@@ -14,6 +15,10 @@ export default function Biler() {
 
   const closeModal = () => {
     setShowModal(false);
+  };
+
+  const addCar = (car: any) => {
+    setCars([...cars, car]);
   };
 
   useEffect(() => {
@@ -43,7 +48,7 @@ export default function Biler() {
           </button>
         </div>
 
-        {showModal && <CreateCar closeModal={closeModal} />}
+        {showModal && <CreateCar closeModal={closeModal} addCar={addCar} />}
 
         <div className="mt-4">
           <BilTable cars={cars} />

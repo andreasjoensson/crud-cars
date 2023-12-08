@@ -17,6 +17,10 @@ export default function Locations() {
     setShowModal(false);
   };
 
+  const addLocation = (location: LocationType) => {
+    setLocations([...locations, location]);
+  };
+
   useEffect(() => {
     const fetchLocations = async () => {
       try {
@@ -44,7 +48,9 @@ export default function Locations() {
           </button>
         </div>
 
-        {showModal && <CreateLocation closeModal={closeModal} />}
+        {showModal && (
+          <CreateLocation closeModal={closeModal} addLocation={addLocation} />
+        )}
 
         <div className="mt-4">
           <LocationTable locations={locations} />
