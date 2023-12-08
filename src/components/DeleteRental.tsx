@@ -3,7 +3,7 @@ import axiosInstance from "../utils/axiosInstance";
 export default function DeleteRental({ id, closeModal }: any) {
   const handleDeleteRental = () => {
     console.log(id);
-    axiosInstance.delete(`/api/rental/${id}`).then((res) => {
+    axiosInstance.delete(`/api/rentals/${id}`).then((res) => {
       console.log(res);
       closeModal();
     });

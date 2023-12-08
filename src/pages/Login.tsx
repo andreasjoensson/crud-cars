@@ -29,7 +29,6 @@ export default function Login() {
     try {
       const response = await axiosInstance.post("/api/auth/sign-in", formData);
       localStorage.setItem("token", response.data.token);
-
       setLoading(false);
       navigate("/app/dashboard");
       // Optionally, you might save the token or user data to state/local storage

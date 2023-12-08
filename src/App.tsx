@@ -26,12 +26,7 @@ function App() {
               >
                 Login
               </Link>
-              <a
-                href="#"
-                className="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
-              >
-                Get started
-              </a>
+
               <button
                 data-collapse-toggle="mobile-menu-2"
                 type="button"
@@ -66,34 +61,10 @@ function App() {
                 </svg>
               </button>
             </div>
-            <div
-              className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
-              id="mobile-menu-2"
-            >
-              <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                <li>
-                  <a
-                    href="#"
-                    className="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white"
-                    aria-current="page"
-                  >
-                    Biler
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
-                  >
-                    Opret bil
-                  </a>
-                </li>
-              </ul>
-            </div>
           </div>
         </nav>
       </header>
-      <section className="bg-center bg-no-repeat bg-[url('https://presskit.porsche.de/models/assets/images/f/Slider_911GTS_01_Einl-b322ce6f.jpg')] bg-gray-700 bg-blend-multiply">
+      <section className="bg-center bg-no-repeat bg-[url('https://i.etsystatic.com/40485572/r/il/265f25/4549611470/il_fullxfull.4549611470_aqx9.jpg')] bg-gray-700 bg-blend-multiply">
         <div className="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
             Bilopedia
@@ -105,8 +76,8 @@ function App() {
             opdatering og sletning af bilrelaterede data.
           </p>
           <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
-            <a
-              href="#"
+            <Link
+              to="/login"
               className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
             >
               Opret bil
@@ -125,17 +96,90 @@ function App() {
                   d="M1 5h12m0 0L9 1m4 4L9 9"
                 />
               </svg>
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/login"
               className="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400"
             >
               Se biler
-            </a>
+            </Link>
           </div>
         </div>
         <DatabaseToggle />
       </section>
+
+      <div className="relative w-3/6 mt-10 pb-12 mx-auto overflow-x-auto">
+        <h1 className="text-xl text-center font-bold mb-4">
+          Oversigt over alle testbrugere
+        </h1>
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" className="px-6 py-3">
+                Email
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Passsword
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Rettigheder
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Beskrivelse
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <th
+                scope="row"
+                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                appuser@example.com
+              </th>
+              <td className="px-6 py-4">password123</td>
+              <td className="px-6 py-4">Normal bruger</td>
+              <td className="px-6 py-4">
+                Har adgang til alt undtagen database.
+              </td>
+            </tr>
+            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <th
+                scope="row"
+                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                dbadmin@example.com
+              </th>
+              <td className="px-6 py-4">password123</td>
+              <td className="px-6 py-4">Admin bruger</td>
+              <td className="px-6 py-4">Har adgang til alt.</td>
+            </tr>
+            <tr className="bg-white dark:bg-gray-800">
+              <th
+                scope="row"
+                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                readonly@example.com
+              </th>
+              <td className="px-6 py-4">password123</td>
+              <td className="px-6 py-4">Læs kun bruger</td>
+              <td className="px-6 py-4">Kan kun læse men ikke skrive.</td>
+            </tr>
+
+            <tr className="bg-white dark:bg-gray-800">
+              <th
+                scope="row"
+                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                restricted@example.com
+              </th>
+              <td className="px-6 py-4">password123</td>
+              <td className="px-6 py-4">Blokeret bruger</td>
+              <td className="px-6 py-4">Kan ikke noget.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

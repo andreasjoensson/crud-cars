@@ -19,7 +19,6 @@ export default function AdminLayout({ children }: any) {
           </main>
         </div>
       </div>
-      <DatabaseToggle />
     </div>
   );
 }
