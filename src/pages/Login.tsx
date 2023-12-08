@@ -16,6 +16,7 @@ export default function Login() {
   });
 
   const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -25,6 +26,7 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
 
     try {
       const response = await axiosInstance.post("/api/auth/sign-in", formData);
@@ -34,6 +36,7 @@ export default function Login() {
     } catch (error: any) {
       console.error("Login failed:", error.response.data); // Handle error response here
       setLoading(false);
+      setError("Login failed. Please check your credentials."); // Set error message
     }
   };
   return (
@@ -48,6 +51,14 @@ export default function Login() {
         </a>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+            {error && (
+              <div
+                className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert"
+              >
+                <span className="font-medium">{error}</span>
+              </div>
+            )}
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Login på din konto
             </h1>
