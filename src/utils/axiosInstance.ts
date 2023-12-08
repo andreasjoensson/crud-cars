@@ -3,7 +3,7 @@ import axios from "axios";
 const isProduction = process.env.NODE_ENV === "production";
 
 const baseURL = isProduction
-  ? "https://your-production-url.com" // Replace this with your production URL
+  ? "https://crud-backend-my25.onrender.com" // Replace this with your production URL
   : "http://localhost:8080"; // Default URL for development
 
 const axiosInstance = axios.create({
