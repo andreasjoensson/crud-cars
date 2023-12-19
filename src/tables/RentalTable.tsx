@@ -16,6 +16,7 @@ export default function RentalTable({ rentals }: { rentals: Rental[] }) {
   });
 
   const openDeleteModal = (rental: Rental) => {
+    console.log('rental', rental)
     setRental(rental);
     setShowDeleteModal(true);
   };
